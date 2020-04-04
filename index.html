@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tz</title>
+</head>
+<body>
+<style>
+	body { background-color: #002B36; }
+</style>
+
+<script>
+
+let length = 0;
+let randomString = '';
+let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+let charReplacer;
+let intReplacer;
+let replacedString = '';
+let countChar = 0;
+let countInt = 0;
+
+while (true) {
+	let num = prompt('Введите число');
+	if(!isNaN(parseInt(num))) {
+		length = num;
+		break;
+	} else console.warn('Введите число!');
+}
+
+for (let i = 0; i < length; i++ ) {
+    randomString += characters.charAt(Math.floor(Math.random() * characters.length));
+}
+
+console.log(`Случайная строка из ${ length } символов: ` + randomString);
+
+charReplacer = prompt('Символ для замены букв?');
+intReplacer = prompt('Символ для замены цифр');
+
+for(let i = 0; i < randomString.length; i++ ){
+	isNaN(parseInt(randomString[i])) ? replacedString += charReplacer : replacedString += intReplacer;
+}
+
+console.log(`Новая строка c заменами букв на ${charReplacer} и цифр на ${intReplacer}: ` + replacedString);
+
+for(let i = 0; i < replacedString.length; i++){
+	replacedString[i] == charReplacer ? countChar++ : countInt++;
+}
+
+console.log(`В строке ${countChar} ${charReplacer} и ${countInt} ${intReplacer}`);
+
+</script>
+</body>
+</html>
